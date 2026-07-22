@@ -1,11 +1,45 @@
+# Gara Djebilet
 
-  # Interactive gara djbilet (finale)-edit (Copy)
+An interactive documentary web experience about the Gara Djebilet iron mine and the strategic railway project connecting southern Algeria to the Port of Oran.
 
-  This is a code bundle for Interactive gara djbilet (finale)-edit (Copy). The original project is available at https://www.figma.com/design/ilf9OG0qXhF9hiMaiiiqmR/Interactive-gara-djbilet--finale--edit--Copy-.
+## About
 
-  ## Running the code
+This project combines:
 
-  Run `npm i` to install the dependencies.
+- Interactive storytelling
+- Data journalism
+- Information design
+- Maps and geographic visualization
+- Editorial motion design
+- Multimedia journalism
 
-  Run `npm run dev` to start the development server.
-  
+The documentary explores the economic, industrial, and strategic importance of the Gara Djebilet iron project through a cinematic and immersive web experience.
+
+## Technologies
+
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- Framer Motion
+
+## Run locally
+
+```bash
+npm install
+npm run dev
+```
+
+## Build
+
+```bash
+npm run build
+```
+
+## Author
+
+**Mohammed Amjed Youb**
+
+Master's Student in Information Design & Transmedia Journalism
+
+Algeria
