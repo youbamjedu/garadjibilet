@@ -1,0 +1,119 @@
+/* ─────────────────────────────────────────────────────────────
+   GLOBAL EDITORIAL RESTRAINT LAYER
+   Tones down sci-fi/HUD aesthetics in favor of cinematic
+   journalism. Loaded after theme.css and fonts.css.
+   ───────────────────────────────────────────────────────────── */
+
+/* Respect reader intent — kill unnecessary motion when asked. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Soften aggressive CRT scanline overlays applied via inline gradients. */
+[style*="repeating-linear-gradient(0deg"][style*="rgba(255,255,255,0.5)"] {
+  opacity: 0.012 !important;
+}
+
+/* Quiet excessive text glow — let typography breathe. */
+h1, h2, h3 {
+  text-shadow: none;
+}
+
+/* Cinematic image easing — long, slow, restrained. */
+img {
+  transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Tame the strongest neon colors (signal lime → desert gold) so the
+   palette reads editorial rather than cyberpunk. Components that
+   pass color values like '#E1FF00' as inline backgrounds will appear
+   slightly desaturated through this filter where applied. */
+[data-tone="editorial"] {
+  filter: saturate(0.92);
+}
+
+/* Long-form reading container — luxurious column width, generous rhythm. */
+.longform,
+[data-longform] {
+  max-width: 68ch;
+  margin-inline: auto;
+  font-size: 1.1875rem;
+  line-height: 2;
+}
+
+.longform p + p,
+[data-longform] p + p {
+  margin-top: 1.5em;
+}
+
+/* Drop-cap utility — used as <p className="has-dropcap">. */
+.has-dropcap::first-letter {
+  float: right;
+  font-size: 4.5em;
+  line-height: 0.85;
+  font-weight: 800;
+  margin: 0.05em 0 0 0.12em;
+  color: var(--brand-gold, #D8A24B);
+}
+
+/* Refined link affordance for editorial body text. */
+.longform a,
+[data-longform] a {
+  color: var(--brand-gold, #D8A24B);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: color 0.3s ease;
+}
+.longform a:hover,
+[data-longform] a:hover {
+  color: var(--brand-orange, #E67635);
+}
+
+/* Image hover — cinematic, never twitchy. */
+.group:hover img {
+  transform: scale(1.03);
+}
+
+/* Subtle global focus ring — accessible, editorial. */
+:focus-visible {
+  outline: 2px solid var(--brand-gold, #D8A24B);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Smooth section seams — kills harsh black gaps between sections. */
+section + section {
+  position: relative;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Pull-quote utility class — lightweight alternative to the
+   <PullQuote /> component for inline use within long-form prose.
+   ───────────────────────────────────────────────────────────── */
+.pullquote {
+  position: relative;
+  margin: 3rem auto;
+  max-width: 38rem;
+  padding: 0 1.5rem;
+  text-align: center;
+  font-size: clamp(1.375rem, 2.4vw, 1.875rem);
+  line-height: 1.55;
+  color: var(--brand-cream, #F5EFE3);
+  font-weight: 500;
+}
+.pullquote::before {
+  content: "";
+  display: block;
+  width: 3rem;
+  height: 1px;
+  margin: 0 auto 2rem;
+  background: var(--brand-gold, #D8A24B);
+  opacity: 0.6;
+}

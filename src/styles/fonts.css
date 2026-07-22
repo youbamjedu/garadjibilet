@@ -1,0 +1,138 @@
+/* ─────────────────────────────────────────────────────────────
+   AWARD-WINNING ARABIC EDITORIAL TYPOGRAPHY SYSTEM
+   ─────────────────────────────────────────────────────────────
+   Editorial → Al Jazeera Arabic (Readex Pro as premium fallback)
+   Interface → Tajawal
+   Data       → IBM Plex Sans Arabic
+   ───────────────────────────────────────────────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700;800;900&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Almarai:wght@400;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+/* Al Jazeera Arabic — proprietary, attempt CDN load with graceful fallback */
+@font-face {
+  font-family: 'Al Jazeera Arabic';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Al Jazeera Arabic'), local('AlJazeera-Arabic'),
+       url('https://aljazeera.com/static/fonts/aljazeera-regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Al Jazeera Arabic';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Al Jazeera Arabic Bold'), local('AlJazeera-Arabic-Bold'),
+       url('https://aljazeera.com/static/fonts/aljazeera-bold.woff2') format('woff2');
+}
+
+:root {
+  /* Font stacks ─────────────────────────────────────────── */
+  --font-editorial: 'Al Jazeera Arabic', 'Readex Pro', 'Almarai', 'Tajawal', system-ui, -apple-system, sans-serif;
+  --font-ui:        'Tajawal', 'Readex Pro', system-ui, -apple-system, sans-serif;
+  --font-data:      'IBM Plex Sans Arabic', 'IBM Plex Sans', 'Tajawal', ui-monospace, monospace;
+
+  /* Editorial reading scale ────────────────────────────── */
+  --fs-display: clamp(3rem, 7vw, 4.5rem);   /* 48 → 72 */
+  --fs-h1:      clamp(2.25rem, 5vw, 3.5rem); /* 36 → 56 */
+  --fs-h2:      clamp(1.75rem, 3.6vw, 2.5rem); /* 28 → 40 */
+  --fs-h3:      clamp(1.375rem, 2.4vw, 1.75rem); /* 22 → 28 */
+  --fs-lead:    clamp(1.1875rem, 1.5vw, 1.375rem); /* 19 → 22 */
+  --fs-body:    1.1875rem;                  /* 19px */
+  --fs-meta:    0.875rem;                   /* 14px */
+
+  --lh-tight:    1.15;
+  --lh-heading:  1.3;
+  --lh-body:     1.9;
+  --lh-longform: 2;
+
+  --tracking-display: -0.02em;
+  --tracking-heading: -0.01em;
+  --tracking-meta:    0.18em;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  overflow-x: hidden;
+  font-family: var(--font-editorial);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  font-feature-settings: 'kern', 'liga', 'calt';
+}
+
+/* Long-form paragraphs — luxurious reading rhythm ───────── */
+p {
+  font-family: var(--font-editorial);
+  line-height: var(--lh-body);
+}
+
+article p,
+[data-longform] p,
+.prose p {
+  font-size: var(--fs-body);
+  line-height: var(--lh-longform);
+  margin-bottom: 1.6em;
+}
+
+/* Headlines — cinematic, editorial authority ─────────────── */
+h1, h2, h3, h4 {
+  font-family: var(--font-editorial);
+  font-weight: 700;
+  letter-spacing: var(--tracking-heading);
+  line-height: var(--lh-heading);
+}
+
+h1 { font-size: var(--fs-h1); letter-spacing: var(--tracking-display); line-height: var(--lh-tight); font-weight: 800; }
+h2 { font-size: var(--fs-h2); }
+h3 { font-size: var(--fs-h3); }
+
+/* Pull quotes ───────────────────────────────────────────── */
+blockquote {
+  font-family: var(--font-editorial);
+  font-size: var(--fs-lead);
+  line-height: var(--lh-heading);
+  font-weight: 500;
+}
+
+/* Interface elements — Tajawal ──────────────────────────── */
+button, input, select, textarea, label,
+nav, [role="navigation"], [role="menu"], [role="tab"], [role="tablist"],
+[data-ui], .ui-text {
+  font-family: var(--font-ui);
+}
+
+/* Numerical / data presentation — IBM Plex Sans Arabic ──── */
+[data-numeric], .data-numeric, .stat-value, .metric,
+.font-mono, code, kbd, samp, pre,
+[class*="font-mono"] {
+  font-family: var(--font-data) !important;
+  font-feature-settings: 'tnum', 'lnum';
+  font-variant-numeric: tabular-nums lining-nums;
+  letter-spacing: 0;
+}
+
+/* ───────────────────────────────────────────────────────────
+   GLOBAL REMAP — components hardcode 'Noto Sans Arabic' inline.
+   These attribute selectors transparently upgrade them to the
+   new editorial stack without touching component files.
+   ─────────────────────────────────────────────────────────── */
+[style*="Noto Sans Arabic"] {
+  font-family: var(--font-editorial) !important;
+}
+[style*="font-mono"] [style*="Noto Sans Arabic"],
+[style*="tabular-nums"],
+[class*="font-mono"][style*="Noto Sans Arabic"] {
+  font-family: var(--font-data) !important;
+}
+
+/* Selection — warm desert gold ─────────────────────────── */
+::selection {
+  background: rgba(216, 162, 75, 0.35);
+  color: #fff;
+}
