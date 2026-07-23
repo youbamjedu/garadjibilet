@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { RouterProvider } from 'react-router';
 import { motion, AnimatePresence } from 'motion/react';
+import { Analytics } from '@vercel/analytics/react';
 import { router } from './routes';
 
 function LoadingScreen({ onComplete }: { onComplete: () => void }) {
@@ -105,6 +106,7 @@ export default function App() {
           </motion.div>
         )}
       </AnimatePresence>
+      <Analytics />
     </div>
   );
 }
