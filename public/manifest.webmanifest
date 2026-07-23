@@ -1,0 +1,20 @@
+{
+  "name": "Gara Djebilet",
+  "short_name": "Gara Djebilet",
+  "description": "Interactive documentary about the Gara Djebilet Iron Mine in Algeria.",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0F172A",
+  "theme_color": "#0F172A",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
